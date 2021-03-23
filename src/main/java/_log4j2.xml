@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Configuration status="warn" packages="com.amituofo">
+	<Properties>
+		<Property name="basePath">.</Property>
+	</Properties>
+
+	<Appenders>
+		<RollingFile name="SYSTEM_LOG" fileName="${basePath}/system.log" filePattern="${basePath}/system-%d{yyyy-MM-dd}.log">
+			<PatternLayout>
+				<pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} - %msg%n
+				</pattern>
+			</PatternLayout>
+			<Policies>
+				<SizeBasedTriggeringPolicy size="1mb" />
+			</Policies>
+			<DefaultRolloverStrategy max="100"/>
+		</RollingFile>
+		
+		<RollingFile name="FOLDER_DISCOVER_LOG" fileName="${basePath}/item_discover.log" filePattern="${basePath}/item_discover-%d{yyyy-MM-dd}.log">
+			<PatternLayout>
+				<pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} - %msg%n
+				</pattern>
+			</PatternLayout>
+			<Policies>
+				<SizeBasedTriggeringPolicy size="1mb" />
+			</Policies>
+			<DefaultRolloverStrategy max="100"/>
+		</RollingFile>
+		
+
+		<Console name="console" target="SYSTEM_OUT">
+			<PatternLayout
+				pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n" />
+		</Console>
+	</Appenders>
+	<Loggers>
+		<!-- <Logger name="com.howtodoinjava" level="debug" additivity="true"> -->
+		<!-- <appender-ref ref="fileLogger" level="debug" /> -->
+		<!-- </Logger> -->
+		<Root level="all" additivity="false">
+			<appender-ref ref="fileLogger" />
+			<!-- <appender-ref ref="console" /> -->
+		</Root>
+	</Loggers>
+</Configuration>
